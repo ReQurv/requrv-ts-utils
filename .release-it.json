@@ -12,5 +12,8 @@
     "tokenRef": "GITHUB_TOKEN",
     "autoGenerate": true,
     "web": false
+  },
+  "npm": {
+    "publish": false
   }
 }
