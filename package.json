@@ -12,7 +12,8 @@
   "author": "ReQurv <devops@requrv.io>",
   "keywords": [],
   "publishConfig": {
-    "@ReQurv:registry": "https://npm.pkg.github.com"
+    "@ReQurv:registry": "https://npm.pkg.github.com",
+    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "dev": "yarn nodemon",
