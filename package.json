@@ -15,7 +15,6 @@
     "build": "rimraf ./build && tsc",
     "release": "dotenv release-it"
   },
-  "private": false,
   "license": "UNLICENSED",
   "devDependencies": {
     "@release-it/bumper": "^6.0.1",
