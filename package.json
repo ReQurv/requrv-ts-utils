@@ -1,6 +1,6 @@
 {
   "name": "@requrv/typescript-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "This is a ReQurv typescript utils",
   "main": "build/index.js",
