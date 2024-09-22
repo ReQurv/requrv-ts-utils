@@ -1,0 +1,16 @@
+{
+  "git": {
+    "commitMessege": "chore: release v${version}",
+    "changelog": "yarn auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
+  },
+  "hooks": {
+    "after:bump": "yarn auto-changelog -p"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release ${version}",
+    "tokenRef": "GITHUB_TOKEN",
+    "autoGenerate": true,
+    "web": false
+  }
+}

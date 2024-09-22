@@ -1,0 +1,32 @@
+{
+  "name": "@requrv/typescript-utils",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "This is a ReQurv typescript utils",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "author": "ReQurv <devops@requrv.io>",
+  "keywords": [],
+  "publishConfig": {
+    "@ReQurv:registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "dev": "yarn nodemon",
+    "build": "rimraf ./build && tsc",
+    "release": "release-it"
+  },
+  "private": true,
+  "devDependencies": {
+    "@release-it/bumper": "^6.0.1",
+    "@release-it/conventional-changelog": "^8.0.2",
+    "@release-it/keep-a-changelog": "^5.0.0",
+    "@types/node": "^22.5.5",
+    "auto-changelog": "^2.5.0",
+    "nodemon": "^3.1.7",
+    "release-it": "^17.6.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.6.2"
+  }
+}
