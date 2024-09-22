@@ -16,6 +16,7 @@
     "release": "dotenv release-it"
   },
   "private": false,
+  "license": "UNLICENSED",
   "devDependencies": {
     "@release-it/bumper": "^6.0.1",
     "@release-it/conventional-changelog": "^8.0.2",
