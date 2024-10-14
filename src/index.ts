@@ -17,4 +17,12 @@ export default class ReQurvUtils {
     return await bcrypt.genSalt();
   }
   //#endregion
+
+  //#region Marked
+  public async markedParser(text: string) {
+    const marked = await import("marked");
+    return marked.parse(text);
+  }
+  //#endregion
+  //#endregion
 }
