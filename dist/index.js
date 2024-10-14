@@ -37,5 +37,13 @@ class ReQurvUtils {
     async passGenSalt() {
         return await bcrypt.genSalt();
     }
+    //#endregion
+    //#region Marked
+    async markedParser(text) {
+        const marked = await import("marked");
+        const DOMPurify = await import("dompurify");
+        const html = await marked.parse(text);
+        return DOMPurify.sanitize(html);
+    }
 }
 exports.default = ReQurvUtils;
