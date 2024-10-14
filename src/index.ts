@@ -21,7 +21,9 @@ export default class ReQurvUtils {
   //#region Marked
   public async markedParser(text: string) {
     const marked = await import("marked");
-    return marked.parse(text);
+    const DOMPurify = await import("dompurify");
+    const html = await marked.parse(text);
+    return DOMPurify.sanitize(html);
   }
   //#endregion
   //#endregion
