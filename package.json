@@ -4,7 +4,7 @@
   "type": "commonjs",
   "description": "This is a ReQurv typescript utils",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -16,8 +16,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "dev": "yarn nodemon",
-    "build": "tsc && tsup src/tsup.config.ts",
+    "dev": "run run nodemon",
+    "build": "tsc && tsup-node src/tsup.config.ts",
     "release": "dotenv release-it"
   },
   "license": "UNLICENSED",

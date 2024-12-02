@@ -1,8 +1,12 @@
 export default class ReQurvUtils {
     constructor();
-    passHashing(text: string): Promise<string>;
-    passCompare(text: string, hash: string): Promise<boolean>;
+    password(): {
+        hashing: (text: string) => Promise<string>;
+        compare: (text: string, hash: string) => Promise<boolean>;
+    };
+    marked(): Promise<{
+        parse: (text: string) => Promise<string>;
+    }>;
     private passGenSalt;
-    markedParser(text: string): Promise<string>;
 }
 //# sourceMappingURL=index.d.ts.map
