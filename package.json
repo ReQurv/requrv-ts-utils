@@ -12,7 +12,7 @@
   "author": "ReQurv <devops@requrv.io>",
   "keywords": [],
   "publishConfig": {
-    "@ReQurv:registry": "https://npm.pkg.github.com",
+    "@requrv:registry": "https://npm.pkg.github.com",
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
