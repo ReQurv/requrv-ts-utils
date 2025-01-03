@@ -31,6 +31,29 @@ export default class ReQurvUtils {
   }
   //#endregion
 
+  //#region OTP
+  /**
+   * Generate OTP
+   * @returns 6 digit alphanumeric OTP
+   */
+  public generateOtp(): string {
+    const digits = "0123456789";
+    const lowerCaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
+    const upperCaseAlphabets = lowerCaseAlphabets.toUpperCase();
+    const specialChars = "!@#%*_+";
+    const availableChar =
+      digits + lowerCaseAlphabets + upperCaseAlphabets + specialChars;
+    let OTP = "";
+
+    // Find the length of string
+    const len = availableChar.length;
+    for (let i = 0; i < 6; i++) {
+      OTP += availableChar[Math.floor(Math.random() * len)];
+    }
+    return OTP;
+  }
+  //#endregion
+
   //#region PRIVATE
   private async passGenSalt() {
     return await bcrypt.genSalt();
