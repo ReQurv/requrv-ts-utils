@@ -34,9 +34,10 @@ export default class ReQurvUtils {
   //#region OTP
   /**
    * Generate OTP
+   * @param ln Length of OTP (default: 6)
    * @returns 6 digit alphanumeric OTP
    */
-  public generateOtp(): string {
+  public generateOtp(ln = 6): string {
     const digits = "0123456789";
     const lowerCaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
     const upperCaseAlphabets = lowerCaseAlphabets.toUpperCase();
@@ -47,7 +48,7 @@ export default class ReQurvUtils {
 
     // Find the length of string
     const len = availableChar.length;
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < ln; i++) {
       OTP += availableChar[Math.floor(Math.random() * len)];
     }
     return OTP;

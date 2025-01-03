@@ -16,7 +16,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "dev": "run run nodemon",
+    "dev": "run nodemon",
     "build": "tsc && tsup-node src/tsup.config.ts",
     "release": "dotenv release-it"
   },
@@ -35,7 +35,7 @@
     "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
     "tsup": "^8.3.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

@@ -7,6 +7,12 @@ export default class ReQurvUtils {
     marked(): Promise<{
         parse: (text: string) => Promise<string>;
     }>;
+    /**
+     * Generate OTP
+     * @param ln Length of OTP (default: 6)
+     * @returns 6 digit alphanumeric OTP
+     */
+    generateOtp(ln?: number): string;
     private passGenSalt;
 }
 //# sourceMappingURL=index.d.ts.map

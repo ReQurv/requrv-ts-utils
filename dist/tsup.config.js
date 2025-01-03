@@ -26,11 +26,11 @@ module.exports = __toCommonJS(tsup_config_exports);
 var import_tsup = require("tsup");
 var tsup_config_default = (0, import_tsup.defineConfig)({
   entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
+  format: ["esm"],
   // Build for commonJS and ESmodules
   dts: true,
   // Generate declaration file (.d.ts)
-  splitting: false,
+  splitting: true,
   sourcemap: true,
   clean: true,
   minify: true
