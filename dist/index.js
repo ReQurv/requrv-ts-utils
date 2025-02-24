@@ -70,11 +70,11 @@ class ReQurvUtils {
      * @param ln Length of OTP (default: 6)
      * @returns 6 digit alphanumeric OTP
      */
-    generateOtp(ln = 6) {
+    generateOtp(ln = 6, special = true) {
         const digits = "0123456789";
         const lowerCaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
         const upperCaseAlphabets = lowerCaseAlphabets.toUpperCase();
-        const specialChars = "!@#%*_+";
+        const specialChars = special ? "!@#%*_+" : "";
         const availableChar = digits + lowerCaseAlphabets + upperCaseAlphabets + specialChars;
         let OTP = "";
         // Find the length of string

@@ -12,7 +12,7 @@ export default class ReQurvUtils {
      * @param ln Length of OTP (default: 6)
      * @returns 6 digit alphanumeric OTP
      */
-    generateOtp(ln?: number): string;
+    generateOtp(ln?: number, special?: boolean): string;
     generateLicense(length: number, pairs?: number): string;
     private passGenSalt;
 }
