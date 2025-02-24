@@ -13,6 +13,7 @@ export default class ReQurvUtils {
      * @returns 6 digit alphanumeric OTP
      */
     generateOtp(ln?: number): string;
+    generateLicense(length: number, pairs?: number): string;
     private passGenSalt;
 }
 //# sourceMappingURL=index.d.ts.map

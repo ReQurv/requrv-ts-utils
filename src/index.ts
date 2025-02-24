@@ -1,4 +1,5 @@
 import * as bcrypt from "bcrypt";
+import sanitizeHtml from "sanitize-html";
 
 export default class ReQurvUtils {
   constructor() {}
@@ -23,9 +24,9 @@ export default class ReQurvUtils {
     return {
       parse: async (text: string) => {
         const marked = await import("marked");
-        const DOMPurify = (await import("dompurify")).default;
         const html = await marked.parse(text);
-        return DOMPurify.sanitize(html);
+
+        return sanitizeHtml(html);
       },
     };
   }
@@ -52,6 +53,21 @@ export default class ReQurvUtils {
       OTP += availableChar[Math.floor(Math.random() * len)];
     }
     return OTP;
+  }
+  //#endregion
+
+  //#region LICENSING
+  public generateLicense(length: number, pairs: number = 4): string {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const digits = "0123456789";
+    const availableChar = characters + digits;
+    const charactersLength = availableChar.length;
+
+    for (let i = 0; i < length; i += 1) {
+      result += availableChar[Math.floor(Math.random() * charactersLength)];
+    }
+    return (result.match(new RegExp(`.{1,${pairs}}`, "g")) || []).join("-");
   }
   //#endregion
 

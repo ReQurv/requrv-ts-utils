@@ -32,8 +32,12 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = __importStar(require("bcrypt"));
+const sanitize_html_1 = __importDefault(require("sanitize-html"));
 class ReQurvUtils {
     constructor() { }
     //#region PASSWORD
@@ -54,9 +58,8 @@ class ReQurvUtils {
         return {
             parse: async (text) => {
                 const marked = await import("marked");
-                const DOMPurify = (await import("dompurify")).default;
                 const html = await marked.parse(text);
-                return DOMPurify.sanitize(html);
+                return (0, sanitize_html_1.default)(html);
             },
         };
     }
@@ -80,6 +83,19 @@ class ReQurvUtils {
             OTP += availableChar[Math.floor(Math.random() * len)];
         }
         return OTP;
+    }
+    //#endregion
+    //#region LICENSING
+    generateLicense(length, pairs = 4) {
+        let result = "";
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const digits = "0123456789";
+        const availableChar = characters + digits;
+        const charactersLength = availableChar.length;
+        for (let i = 0; i < length; i += 1) {
+            result += availableChar[Math.floor(Math.random() * charactersLength)];
+        }
+        return (result.match(new RegExp(`.{1,${pairs}}`, "g")) || []).join("-");
     }
     //#endregion
     //#region PRIVATE
