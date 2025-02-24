@@ -22,11 +22,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          
       - run: yarn install
       - run: yarn test
 
   publish-gpr:
-    needs: build
+    needs: 
+      - build
+      - test
     runs-on: ubuntu-latest
     permissions:
       packages: write

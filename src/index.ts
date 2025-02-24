@@ -1,5 +1,6 @@
 import * as bcrypt from "bcrypt";
 import sanitizeHtml from "sanitize-html";
+import marked from "marked";
 
 export default class ReQurvUtils {
   constructor() {}
@@ -23,7 +24,6 @@ export default class ReQurvUtils {
   public async marked() {
     return {
       parse: async (text: string) => {
-        const marked = await import("marked");
         const html = await marked.parse(text);
 
         return sanitizeHtml(html);
