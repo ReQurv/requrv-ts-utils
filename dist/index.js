@@ -38,6 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = __importStar(require("bcrypt"));
 const sanitize_html_1 = __importDefault(require("sanitize-html"));
+const marked_1 = __importDefault(require("marked"));
 class ReQurvUtils {
     constructor() { }
     //#region PASSWORD
@@ -57,8 +58,7 @@ class ReQurvUtils {
     async marked() {
         return {
             parse: async (text) => {
-                const marked = await import("marked");
-                const html = await marked.parse(text);
+                const html = await marked_1.default.parse(text);
                 return (0, sanitize_html_1.default)(html);
             },
         };
