@@ -10,14 +10,14 @@ describe("requrv-class", () => {
         const password = "test123";
         describe("generateHash", () => {
             it("should generate a hash for the password", async () => {
-                const hashed = await requrv.password().hashing(password);
+                const hashed = await requrv.password.hashing(password);
                 expect(hashed.length).toBeGreaterThan(password.length);
             });
         });
         describe("checkPassword", () => {
             it("should return true if the password matches the hash", async () => {
-                const hashed = await requrv.password().hashing(password);
-                const check = await requrv.password().compare(password, hashed);
+                const hashed = await requrv.password.hashing(password);
+                const check = await requrv.password.compare(password, hashed);
                 expect(check).toBeTruthy();
             });
         });
@@ -25,8 +25,7 @@ describe("requrv-class", () => {
     describe("marked", () => {
         it("should return HTML", async () => {
             const text = "Hello **World**!<script>alert('test');</script>";
-            const marked = await requrv.marked();
-            const html = await marked.parse(text);
+            const html = await requrv.marked.parse(text);
             expect(html.replace(/\s/, " ")).toMatch("<p>Hello <strong>World</strong>!</p>");
         });
     });
@@ -40,6 +39,13 @@ describe("requrv-class", () => {
         it("should generate a OTP", () => {
             const license = requrv.generateLicense(32);
             expect(license).toMatch(/^([A-Z0-9]+-){7}([A-Z0-9]+$)/);
+        });
+    });
+    describe("utility", () => {
+        it("should return slug string", async () => {
+            const text = "Hello World";
+            const slug = await requrv.utility.createSlug(text);
+            expect(slug).toMatch("hello-world");
         });
     });
 });

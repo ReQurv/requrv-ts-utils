@@ -42,27 +42,23 @@ const marked_1 = __importDefault(require("marked"));
 class ReQurvUtils {
     constructor() { }
     //#region PASSWORD
-    password() {
-        return {
-            hashing: async (text) => {
-                const salt = await this.passGenSalt();
-                return await bcrypt.hash(text, salt);
-            },
-            compare: async (text, hash) => {
-                return await bcrypt.compare(text, hash);
-            },
-        };
-    }
+    password = {
+        hashing: async (text) => {
+            const salt = await bcrypt.genSalt();
+            return await bcrypt.hash(text, salt);
+        },
+        compare: async (text, hash) => {
+            return await bcrypt.compare(text, hash);
+        },
+    };
     //#endregion
     //#region MARKED
-    async marked() {
-        return {
-            parse: async (text) => {
-                const html = await marked_1.default.parse(text);
-                return (0, sanitize_html_1.default)(html);
-            },
-        };
-    }
+    marked = {
+        parse: async (text) => {
+            const html = await marked_1.default.parse(text);
+            return (0, sanitize_html_1.default)(html);
+        },
+    };
     //#endregion
     //#region OTP
     /**
@@ -98,9 +94,16 @@ class ReQurvUtils {
         return (result.match(new RegExp(`.{1,${pairs}}`, "g")) || []).join("-");
     }
     //#endregion
-    //#region PRIVATE
-    async passGenSalt() {
-        return await bcrypt.genSalt();
-    }
+    //#region UTILITY
+    utility = {
+        /**
+         * Converts a string to a slug.
+         * @param str - The string to be converted to a slug.
+         * @returns A slugified version of the input string. Spaces are replaced with hyphens
+         */
+        createSlug: (str) => {
+            return str.toLowerCase().replace(" ", "-");
+        },
+    };
 }
 exports.default = ReQurvUtils;

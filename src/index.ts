@@ -6,7 +6,7 @@ export default class ReQurvUtils {
   constructor() {}
 
   //#region PASSWORD
-  static password = {
+  public password = {
     hashing: async (text: string) => {
       const salt = await bcrypt.genSalt();
       return await bcrypt.hash(text, salt);
@@ -19,7 +19,7 @@ export default class ReQurvUtils {
   //#endregion
 
   //#region MARKED
-  static marked = {
+  public marked = {
     parse: async (text: string) => {
       const html = await marked.parse(text);
 
@@ -68,7 +68,7 @@ export default class ReQurvUtils {
   //#endregion
 
   //#region UTILITY
-  static utility = {
+  public utility = {
     /**
      * Converts a string to a slug.
      * @param str - The string to be converted to a slug.

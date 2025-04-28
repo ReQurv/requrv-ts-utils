@@ -1,12 +1,12 @@
 export default class ReQurvUtils {
     constructor();
-    password(): {
+    password: {
         hashing: (text: string) => Promise<string>;
         compare: (text: string, hash: string) => Promise<boolean>;
     };
-    marked(): Promise<{
+    marked: {
         parse: (text: string) => Promise<string>;
-    }>;
+    };
     /**
      * Generate OTP
      * @param ln Length of OTP (default: 6)
@@ -14,6 +14,13 @@ export default class ReQurvUtils {
      */
     generateOtp(ln?: number, special?: boolean): string;
     generateLicense(length: number, pairs?: number): string;
-    private passGenSalt;
+    utility: {
+        /**
+         * Converts a string to a slug.
+         * @param str - The string to be converted to a slug.
+         * @returns A slugified version of the input string. Spaces are replaced with hyphens
+         */
+        createSlug: (str: string) => string;
+    };
 }
 //# sourceMappingURL=index.d.ts.map

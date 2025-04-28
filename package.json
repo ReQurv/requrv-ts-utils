@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "run nodemon",
     "test": "jest",
-    "build": "tsc && tsup-node src/tsup.config.ts",
+    "build": "tsc && yarn test && tsup-node src/tsup.config.ts",
     "release": "dotenv release-it"
   },
   "license": "UNLICENSED",
@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "dompurify": "^3.2.4",
     "jsdom": "^26.0.0",
     "marked": "^14.1.2",
     "sanitize-html": "^2.14.0"
