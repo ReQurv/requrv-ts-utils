@@ -6,30 +6,26 @@ export default class ReQurvUtils {
   constructor() {}
 
   //#region PASSWORD
-  public password() {
-    return {
-      hashing: async (text: string) => {
-        const salt = await this.passGenSalt();
-        return await bcrypt.hash(text, salt);
-      },
+  static password = {
+    hashing: async (text: string) => {
+      const salt = await bcrypt.genSalt();
+      return await bcrypt.hash(text, salt);
+    },
 
-      compare: async (text: string, hash: string) => {
-        return await bcrypt.compare(text, hash);
-      },
-    };
-  }
+    compare: async (text: string, hash: string) => {
+      return await bcrypt.compare(text, hash);
+    },
+  };
   //#endregion
 
   //#region MARKED
-  public async marked() {
-    return {
-      parse: async (text: string) => {
-        const html = await marked.parse(text);
+  static marked = {
+    parse: async (text: string) => {
+      const html = await marked.parse(text);
 
-        return sanitizeHtml(html);
-      },
-    };
-  }
+      return sanitizeHtml(html);
+    },
+  };
   //#endregion
 
   //#region OTP
@@ -71,8 +67,16 @@ export default class ReQurvUtils {
   }
   //#endregion
 
-  //#region PRIVATE
-  private async passGenSalt() {
-    return await bcrypt.genSalt();
-  }
+  //#region UTILITY
+  static utility = {
+    /**
+     * Converts a string to a slug.
+     * @param str - The string to be converted to a slug.
+     * @returns A slugified version of the input string. Spaces are replaced with hyphens
+     */
+    createSlug: (str: string) => {
+      return str.toLowerCase().replace(" ", "-");
+    },
+  };
+  //#endregion
 }
