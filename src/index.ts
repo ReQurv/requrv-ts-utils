@@ -1,4 +1,4 @@
-import * as bcrypt from "bcrypt";
+import { compare, genSalt, hash } from "bcryptjs";
 import sanitizeHtml from "sanitize-html";
 import marked from "marked";
 
@@ -8,12 +8,12 @@ export default class ReQurvUtils {
   //#region PASSWORD
   public password = {
     hashing: async (text: string) => {
-      const salt = await bcrypt.genSalt();
-      return await bcrypt.hash(text, salt);
+      const salt = await genSalt();
+      return await hash(text, salt);
     },
 
     compare: async (text: string, hash: string) => {
-      return await bcrypt.compare(text, hash);
+      return await compare(text, hash);
     },
   };
   //#endregion
