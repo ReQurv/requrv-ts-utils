@@ -14,6 +14,9 @@ export default class ReQurvUtils {
      */
     generateOtp(ln?: number, special?: boolean): string;
     generateLicense(length: number, pairs?: number): string;
+    csv: {
+        loadCsv<T = any>(filePath: string): T[];
+    };
     utility: {
         /**
          * Converts a string to a slug.

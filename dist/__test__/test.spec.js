@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = require("path");
 const index_1 = __importDefault(require("../index"));
 describe("requrv-class", () => {
     const requrv = new index_1.default();
@@ -46,6 +47,14 @@ describe("requrv-class", () => {
             const text = "Hello World";
             const slug = await requrv.utility.createSlug(text);
             expect(slug).toMatch("hello-world");
+        });
+    });
+    describe("csv", () => {
+        it("should return json object", async () => {
+            const csvPath = (0, path_1.resolve)(__dirname, "../../file_test/username.csv");
+            const result = requrv.csv.loadCsv(csvPath);
+            const first = result[0];
+            expect(first.Username).toMatch("booker12");
         });
     });
 });

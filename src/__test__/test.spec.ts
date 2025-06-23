@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import ReQurvUtils from "../index";
 
 describe("requrv-class", () => {
@@ -56,6 +57,23 @@ describe("requrv-class", () => {
 
       const slug = await requrv.utility.createSlug(text);
       expect(slug).toMatch("hello-world");
+    });
+  });
+
+  describe("csv", () => {
+    it("should return json object", async () => {
+      const csvPath = resolve(__dirname, "../../file_test/username.csv");
+
+      const result = requrv.csv.loadCsv<
+        {
+          Username: string;
+          Identifier: string;
+          "First name": string;
+          "Last name": string;
+        }
+      >(csvPath);
+      const first = result[0];
+      expect(first.Username).toMatch("booker12");
     });
   });
 });

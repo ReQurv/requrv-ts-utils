@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "convert-csv-to-json": "^3.5.0",
     "jsdom": "^26.0.0",
     "marked": "^14.1.2",
     "sanitize-html": "^2.14.0"

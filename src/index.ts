@@ -1,6 +1,7 @@
 import { compare, genSalt, hash } from "bcryptjs";
 import sanitizeHtml from "sanitize-html";
 import marked from "marked";
+import csvToJson from "convert-csv-to-json";
 
 export default class ReQurvUtils {
   constructor() {}
@@ -65,6 +66,16 @@ export default class ReQurvUtils {
     }
     return (result.match(new RegExp(`.{1,${pairs}}`, "g")) || []).join("-");
   }
+  //#endregion
+
+  //#region CSV
+  public csv = {
+    loadCsv<T = any>(filePath: string) {
+      const jsonData: T[] = csvToJson.getJsonFromCsv(filePath);
+
+      return jsonData;
+    },
+  };
   //#endregion
 
   //#region UTILITY

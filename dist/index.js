@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bcryptjs_1 = require("bcryptjs");
 const sanitize_html_1 = __importDefault(require("sanitize-html"));
 const marked_1 = __importDefault(require("marked"));
+const convert_csv_to_json_1 = __importDefault(require("convert-csv-to-json"));
 class ReQurvUtils {
     constructor() { }
     //#region PASSWORD
@@ -60,6 +61,14 @@ class ReQurvUtils {
         }
         return (result.match(new RegExp(`.{1,${pairs}}`, "g")) || []).join("-");
     }
+    //#endregion
+    //#region CSV
+    csv = {
+        loadCsv(filePath) {
+            const jsonData = convert_csv_to_json_1.default.getJsonFromCsv(filePath);
+            return jsonData;
+        },
+    };
     //#endregion
     //#region UTILITY
     utility = {
