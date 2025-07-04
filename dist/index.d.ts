@@ -12,7 +12,7 @@ export default class ReQurvUtils {
      * @param ln Length of OTP (default: 6)
      * @returns 6 digit alphanumeric OTP
      */
-    generateOtp(ln?: number, special?: boolean): string;
+    generateOtp(ln?: number, type?: "numeric" | "special" | "alphanumeric"): string;
     generateLicense(length: number, pairs?: number): string;
     csv: {
         loadCsv<T = any>(filePath: string): T[];

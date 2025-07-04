@@ -35,13 +35,31 @@ export default class ReQurvUtils {
    * @param ln Length of OTP (default: 6)
    * @returns 6 digit alphanumeric OTP
    */
-  public generateOtp(ln = 6, special = true): string {
+  public generateOtp(
+    ln = 6,
+    type: "numeric" | "special" | "alphanumeric" = "special"
+  ): string {
     const digits = "0123456789";
     const lowerCaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
     const upperCaseAlphabets = lowerCaseAlphabets.toUpperCase();
-    const specialChars = special ? "!@#%*_+" : "";
-    const availableChar =
+    const specialChars = "!@#%*_+";
+
+    let availableChar =
       digits + lowerCaseAlphabets + upperCaseAlphabets + specialChars;
+
+    switch (type) {
+      case "special":
+        availableChar =
+          digits + lowerCaseAlphabets + upperCaseAlphabets + specialChars;
+        break;
+      case "alphanumeric":
+        availableChar = digits + lowerCaseAlphabets + upperCaseAlphabets;
+        break;
+      case "numeric":
+        availableChar = digits;
+        break;
+    }
+
     let OTP = "";
 
     // Find the length of string
